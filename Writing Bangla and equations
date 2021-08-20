@@ -1,0 +1,7 @@
+%%manim MultiLanguage
+class MultiLanguage(Scene):
+    def construct(self):
+        morning = MarkupText("নীট বল, ").move_to(LEFT*2.5+UP*0.2)
+        a=MathTex("\\vec{F}_{net} = \\sum_i \\vec{F}_i")
+
+        self.play(FadeIn(a,morning),run_time=3)
