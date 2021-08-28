@@ -1,0 +1,45 @@
+from manim import*
+class ami(Scene):
+    def construct(self):
+        num=NumberPlane().add_coordinates()
+        k=ValueTracker(-2)
+        l=ValueTracker(0)
+        q=ValueTracker(0)
+       
+       
+        c=Dot().move_to(ORIGIN)
+
+        
+
+        
+        j=always_redraw(lambda:Line(start=num.c2p(0,0),end=num.c2p(l.get_value(),0),stroke_width=10))
+        
+        a=always_redraw(lambda:Rectangle(width=1,height=1).move_to(num.c2p(k.get_value(),0)))
+        o=always_redraw(lambda:Line(start=num.c2p(k.get_value(),0),end=c.get_center(),stroke_color=RED,stroke_width=10))
+        p=always_redraw(lambda:Line(start=num.c2p(5,0),end=num.c2p(q.get_value(),0),stroke_width=10))
+        b=always_redraw(lambda:Rectangle(width=1,height=1).move_to(num.c2p(q.get_value(),0)))
+        self.add(c,num)
+        
+        
+        self.play(Create(a))
+        self.play(Create(o))
+        
+        self.play(Create(j))
+        
+        self.play(l.animate.set_value(5),run_time=5)
+        
+        
+        
+
+        self.play(k.animate.set_value(0),run_time=5)
+        self.remove(j,a)
+        
+        self.add(p,b)
+        
+        self.play(q.animate.set_value(3),run_time=5)
+        
+
+        
+        
+        self.wait(4)
+       
