@@ -1,0 +1,27 @@
+from manim import *
+
+class ExampleCylinder(ThreeDScene):
+    def construct(self):
+        axes = ThreeDAxes()
+        cylinder1 = Cylinder(radius=0.2, height=2)
+        cylinder2 = Cylinder(radius=0.3, height=2)
+        cylinder3 = Cylinder(radius=0.4, height=2)
+        cylinder4 = Cylinder(radius=0.5, height=2)
+        number_plane = NumberPlane(
+            x_range=[-10, 10, 1],
+            y_range=[-10, 10, 1],
+            background_line_style={
+                "stroke_color": TEAL,
+                "stroke_width": 4,
+                "stroke_opacity": 0.6
+            }
+        )
+        self.add(number_plane.shift(axes.c2p(0,0,3)))
+        
+        
+        self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
+        
+        self.play(cylinder1.animate.move_to(axes.c2p(0,0,2)),cylinder2.animate.move_to(axes.c2p(0,0,1.8)),cylinder3.animate.move_to(axes.c2p(0,0,1.6)),cylinder4.animate.move_to(axes.c2p(0,0,1.4)),run_time=3)
+        self.begin_ambient_camera_rotation(rate=PI/10,about="theta")
+        self.begin_ambient_camera_rotation(rate=PI/10,about="phi")
+        self.wait(5)
