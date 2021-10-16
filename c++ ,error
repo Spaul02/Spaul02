@@ -1,14 +1,15 @@
+
 #include <iostream>
 #include <cmath>
 #include <fstream>
 
 using namespace std;
 
-  double mysin(int x)
+  double mysin(int x,int n)
   {
   int y,i,z;
   y=1;
-  for(i=1;i<=100;i++)
+  for(i=1;i<=n;i++)
   {
       y=y*(1-pow(x,2)/pow(i,2)*pow(M_PI,2));
      
@@ -20,11 +21,10 @@ using namespace std;
      int main()
      {
          ofstream fout("error.dat");
-         int sum,n;
-         double x=0.5;
-         cin>>n;
-         for(n=1;n<=100;n++)
-         fout<<n<<" "<<abs(mysin(x)-sin(x))<<endl;
+         int i,n;
+         double x=3.14;
+         
+         for(i=10;i<=100;i++)
+         fout<<i<<" "<<abs(mysin(x,i)-sin(x))<<endl;
          return 0;
      }
-     
